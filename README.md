@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="frontend/public/branding/aleens-logo.png" alt="Aleens logo" width="150" />
+  <img src="frontend/public/branding/aleens-logo.png" alt="Aleens logo" width="360" />
 </p>
 
 # Aleens
