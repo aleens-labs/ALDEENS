@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DefenderLens Report",
+  "type": "object",
+  "properties": {
+    "analysisId": { "type": "string" },
+    "datasetName": { "type": "string" },
+    "scores": { "type": "object" },
+    "findings": {
+      "type": "array",
+      "items": { "$ref": "./finding.schema.json" }
+    },
+    "analystBrief": { "type": "string" }
+  },
+  "required": ["analysisId", "datasetName", "scores", "findings", "analystBrief"]
+}
+

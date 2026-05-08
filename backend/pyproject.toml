@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aleens-backend"
+version = "0.1.0"
+description = "Aleens backend for deterministic Windows incident triage"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.115.0,<1.0.0",
+  "openai>=1.0.0,<2.0.0",
+  "uvicorn[standard]>=0.30.0,<1.0.0",
+  "pydantic>=2.8.0,<3.0.0",
+  "python-multipart>=0.0.9,<1.0.0",
+  "PyYAML>=6.0.0,<7.0.0",
+  "reportlab>=4.2.0,<5.0.0",
+  "fpdf2>=2.8.0,<3.0.0",
+  "weasyprint>=68.0,<69.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3.0,<9.0.0",
+  "httpx>=0.27.0,<1.0.0",
+]
+
+[project.scripts]
+aleens = "app.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+python_files = ["test*.py"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app*"]

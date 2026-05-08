@@ -1,0 +1,16 @@
+{
+  "name": "Aleens",
+  "positioning": "From noisy Windows logs to evidence-backed incident reasoning.",
+  "commands": [
+    "docker-compose up --build",
+    "cd backend && uvicorn app.main:app",
+    "cd frontend && npm run dev"
+  ],
+  "demoDataset": "officeToPowerShell",
+  "exports": ["markdown", "json", "pdf"],
+  "guardrails": {
+    "defensiveOnly": true,
+    "payloadRedaction": true,
+    "templateFallback": true
+  }
+}

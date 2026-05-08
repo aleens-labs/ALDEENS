@@ -1,0 +1,25 @@
+{
+  "datasetId": "adminPowerShellInventory",
+  "events": [
+    {
+      "timestamp": "2026-04-20T09:18:04Z",
+      "Computer": "IT-OPS-013",
+      "User": "ITOPS\\a.lee",
+      "Image": "C:\\Windows\\System32\\cmd.exe",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "CommandLine": "cmd.exe /c powershell.exe -File C:\\Scripts\\inventory.ps1",
+      "EventID": 1,
+      "ProviderName": "Microsoft-Windows-Sysmon"
+    },
+    {
+      "timestamp": "2026-04-20T09:18:05Z",
+      "Computer": "IT-OPS-013",
+      "User": "ITOPS\\a.lee",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+      "CommandLine": "powershell.exe -File C:\\Scripts\\inventory.ps1",
+      "EventID": 1,
+      "ProviderName": "Microsoft-Windows-Sysmon"
+    }
+  ]
+}

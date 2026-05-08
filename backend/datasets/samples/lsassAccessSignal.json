@@ -1,0 +1,17 @@
+{
+  "datasetId": "lsassAccessSignal",
+  "events": [
+    {
+      "timestamp": "2026-04-20T14:18:02Z",
+      "Computer": "HR-WS-103",
+      "User": "HR\\m.reyes",
+      "Image": "C:\\Windows\\System32\\rundll32.exe",
+      "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+      "CommandLine": "rundll32.exe comsvcs.dll, MiniDump 680 C:\\Users\\Public\\lsass.dmp full",
+      "TargetImage": "C:\\Windows\\System32\\lsass.exe",
+      "EventID": 10,
+      "ProviderName": "Microsoft-Windows-Sysmon"
+    }
+  ]
+}
+

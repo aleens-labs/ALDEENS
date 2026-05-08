@@ -1,0 +1,14 @@
+rules:
+  - id: DL-WIN-001
+    title: Office spawned PowerShell
+    technique: T1059.001
+    tactic: Execution
+    score: 20
+    confidence: 0.16
+  - id: DL-WIN-002
+    title: Suspicious parent-child process chain
+    technique: T1059.001
+    tactic: Execution
+    score: 15
+    confidence: 0.12
+

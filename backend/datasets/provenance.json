@@ -1,0 +1,124 @@
+{
+  "datasets": [
+    {
+      "datasetId": "officeToPowerShell",
+      "title": "Office to PowerShell Reference Chain",
+      "description": "A macro-lure style Office launch that transitions into encoded PowerShell, touches LSASS, and reaches an outbound host.",
+      "samplePath": "backend/datasets/samples/officeToPowerShell.json",
+      "sourceName": "Public-benchmark-aligned reference dataset",
+      "sourceUrl": "https://github.com/OTRF/Security-Datasets",
+      "sourceCatalogUrl": "https://github.com/OTRF/Security-Datasets",
+      "collectionType": "Sysmon-compatible JSON reference dataset",
+      "benchmarkTier": "reference-derived",
+      "attackDescription": "Office document launches PowerShell, then encoded execution, credential access signal, and outbound beaconing.",
+      "attckTechnique": ["T1059.001", "T1027", "T1003.001", "T1071"]
+    },
+    {
+      "datasetId": "otrfLsassMemoryDumpComsvcs",
+      "title": "OTRF LSASS Memory Dump via COMSVCS",
+      "description": "An upstream OTRF/Mordor Windows Security fixture where the host requests and reads LSASS process memory.",
+      "samplePath": "backend/datasets/public/otrf/psh_lsass_memory_dump_comsvcs_2020-10-18T19500924.json",
+      "sourceName": "OTRF Security Datasets / Mordor",
+      "sourceUrl": "https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/credential_access/host/psh_lsass_memory_dump_comsvcs.zip",
+      "sourceCatalogUrl": "https://github.com/OTRF/Security-Datasets",
+      "collectionType": "Upstream Windows Security JSONL fixture",
+      "benchmarkTier": "public-upstream",
+      "archiveMember": "psh_lsass_memory_dump_comsvcs_2020-10-18T19500924.json",
+      "fixtureSha256": "264D9048698E79BB7DBCA12A770EDD9ED947EA8A518965AF747ED64E57F176E5",
+      "attackDescription": "A COMSVCS-assisted LSASS dump sequence produces direct process-handle and memory-read telemetry against lsass.exe.",
+      "attckTechnique": ["T1003.001"]
+    },
+    {
+      "datasetId": "otrfRegistryRunKeyPersistence",
+      "title": "OTRF Registry Run-Key Persistence",
+      "description": "An upstream OTRF/Mordor Sysmon fixture where PowerShell modifies a Windows autorun registry path.",
+      "samplePath": "backend/datasets/public/otrf/empire_persistence_registry_modification_run_keys_elevated_user_2020-07-22001847.json",
+      "sourceName": "OTRF Security Datasets / Mordor",
+      "sourceUrl": "https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/persistence/host/empire_persistence_registry_modification_run_keys_elevated_user.zip",
+      "sourceCatalogUrl": "https://github.com/OTRF/Security-Datasets",
+      "collectionType": "Upstream Windows Sysmon JSONL fixture",
+      "benchmarkTier": "public-upstream",
+      "archiveMember": "empire_persistence_registry_modification_run_keys_elevated_user_2020-07-22001847.json",
+      "fixtureSha256": "0DBDF804174D25208341210DBABA6DC0E994E2E5DA0A5806540FB543AD42EE6E",
+      "attackDescription": "PowerShell modifies an HKLM CurrentVersion Run key to establish autorun persistence for a follow-on payload.",
+      "attckTechnique": ["T1547"]
+    },
+    {
+      "datasetId": "otrfPowerShellCmstpOutbound",
+      "title": "OTRF PowerShell CMSTP Outbound",
+      "description": "An upstream OTRF/Mordor host fixture where PowerShell associated with a CMSTP bypass sequence reaches public internet infrastructure.",
+      "samplePath": "backend/datasets/public/otrf/psh_cmstp_execution_bypassuac_2020-10-2201543213.json",
+      "sourceName": "OTRF Security Datasets / Mordor",
+      "sourceUrl": "https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/defense_evasion/host/psh_cmstp_execution_bypassuac.zip",
+      "sourceCatalogUrl": "https://github.com/OTRF/Security-Datasets",
+      "collectionType": "Upstream Windows Security JSONL fixture",
+      "benchmarkTier": "public-upstream",
+      "archiveMember": "psh_cmstp_execution_bypassuac_2020-10-2201543213.json",
+      "fixtureSha256": "DFA829E497D9825AE9C63F459BB8E5E96BA260877010038182429510F1CEBC2D",
+      "attackDescription": "PowerShell activity associated with a CMSTP bypass sequence reaches public IP infrastructure, producing a defensible outbound-connection signal.",
+      "attckTechnique": ["T1071", "T1059.001"]
+    },
+    {
+      "datasetId": "lsassAccessSignal",
+      "title": "LSASS Access Signal",
+      "description": "A focused credential-access sample showing a process targetting LSASS memory.",
+      "samplePath": "backend/datasets/samples/lsassAccessSignal.json",
+      "sourceName": "Public-benchmark-aligned reference dataset",
+      "sourceUrl": "https://github.com/OTRF/Security-Datasets",
+      "sourceCatalogUrl": "https://github.com/OTRF/Security-Datasets",
+      "collectionType": "Sysmon-compatible JSON reference dataset",
+      "benchmarkTier": "reference-derived",
+      "attackDescription": "A living-off-the-land binary touches LSASS memory.",
+      "attckTechnique": ["T1003.001"]
+    },
+    {
+      "datasetId": "suspiciousOutboundPowerShell",
+      "title": "Suspicious Outbound PowerShell",
+      "description": "A PowerShell execution that opens an external connection without the full credential-access chain.",
+      "samplePath": "backend/datasets/samples/suspiciousOutboundPowerShell.json",
+      "sourceName": "Public-benchmark-aligned reference dataset",
+      "sourceUrl": "https://github.com/OTRF/Security-Datasets",
+      "sourceCatalogUrl": "https://github.com/OTRF/Security-Datasets",
+      "collectionType": "Sysmon-compatible JSON reference dataset",
+      "benchmarkTier": "reference-derived",
+      "attackDescription": "PowerShell stages or fetches content from an external host.",
+      "attckTechnique": ["T1059.001", "T1071"]
+    },
+    {
+      "datasetId": "adminPowerShellInventory",
+      "title": "Administrative PowerShell Inventory",
+      "description": "An intentionally ambiguous shell-to-PowerShell workflow that could be benign IT automation or a suspicious operator chain.",
+      "samplePath": "backend/datasets/samples/adminPowerShellInventory.json",
+      "sourceName": "Reference ambiguity dataset",
+      "sourceUrl": "https://github.com/OTRF/Security-Datasets",
+      "sourceCatalogUrl": "https://github.com/OTRF/Security-Datasets",
+      "collectionType": "Sysmon-compatible JSON reference dataset",
+      "benchmarkTier": "reference-derived",
+      "attackDescription": "cmd.exe launches a PowerShell inventory script without payload, network, LSASS, or persistence evidence. This dataset is designed to land in needs-review territory.",
+      "attckTechnique": ["T1059.001"]
+    }
+  ],
+  "replacementGuidance": [
+    {
+      "sourceName": "OTRF Mordor",
+      "sourceUrl": "https://github.com/OTRF/Security-Datasets",
+      "collectionType": "Curated Windows/Sysmon attack telemetry",
+      "attackDescription": "Replace or extend the reference pack with public attack traces mapped to ATT&CK.",
+      "attckTechnique": ["T1059.001", "T1003.001", "T1547", "T1053"]
+    },
+    {
+      "sourceName": "Exported Sysmon JSON",
+      "sourceUrl": "https://learn.microsoft.com/sysinternals/downloads/sysmon",
+      "collectionType": "Direct host export",
+      "attackDescription": "Upload your own lab-generated or enterprise-exported Sysmon events.",
+      "attckTechnique": ["T1059.001", "T1027", "T1071"]
+    },
+    {
+      "sourceName": "Microsoft Defender Incident Export",
+      "sourceUrl": "https://learn.microsoft.com/defender-endpoint/api/",
+      "collectionType": "Defender-style export",
+    "attackDescription": "Normalize device events and alerts into the Aleens evidence schema.",
+      "attckTechnique": ["T1003.001", "T1071", "T1547"]
+    }
+  ]
+}

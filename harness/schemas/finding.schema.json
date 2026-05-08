@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DefenderLens Finding",
+  "type": "object",
+  "properties": {
+    "ruleId": { "type": "string" },
+    "title": { "type": "string" },
+    "reason": { "type": "string" },
+    "mitreTechnique": { "type": "string" },
+    "scoreContribution": { "type": "number" }
+  },
+  "required": ["ruleId", "title", "reason", "mitreTechnique"]
+}
+

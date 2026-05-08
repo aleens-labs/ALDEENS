@@ -1,0 +1,37 @@
+{
+  "fixtures": [
+    {
+      "datasetId": "otrfLsassMemoryDumpComsvcs",
+      "localPath": "backend/datasets/public/otrf/psh_lsass_memory_dump_comsvcs_2020-10-18T19500924.json",
+      "sourceName": "OTRF Security Datasets / Mordor",
+      "sourceUrl": "https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/credential_access/host/psh_lsass_memory_dump_comsvcs.zip",
+      "archiveMember": "psh_lsass_memory_dump_comsvcs_2020-10-18T19500924.json",
+      "fixtureSha256": "264D9048698E79BB7DBCA12A770EDD9ED947EA8A518965AF747ED64E57F176E5",
+      "collectionType": "Upstream Windows Security JSONL fixture",
+      "attackDescription": "A COMSVCS-assisted LSASS dump sequence produces direct process-handle and memory-read telemetry against lsass.exe.",
+      "attckTechnique": ["T1003.001"]
+    },
+    {
+      "datasetId": "otrfRegistryRunKeyPersistence",
+      "localPath": "backend/datasets/public/otrf/empire_persistence_registry_modification_run_keys_elevated_user_2020-07-22001847.json",
+      "sourceName": "OTRF Security Datasets / Mordor",
+      "sourceUrl": "https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/persistence/host/empire_persistence_registry_modification_run_keys_elevated_user.zip",
+      "archiveMember": "empire_persistence_registry_modification_run_keys_elevated_user_2020-07-22001847.json",
+      "fixtureSha256": "0DBDF804174D25208341210DBABA6DC0E994E2E5DA0A5806540FB543AD42EE6E",
+      "collectionType": "Upstream Windows Sysmon JSONL fixture",
+      "attackDescription": "PowerShell modifies an HKLM CurrentVersion Run key to establish autorun persistence for a follow-on payload.",
+      "attckTechnique": ["T1547"]
+    },
+    {
+      "datasetId": "otrfPowerShellCmstpOutbound",
+      "localPath": "backend/datasets/public/otrf/psh_cmstp_execution_bypassuac_2020-10-2201543213.json",
+      "sourceName": "OTRF Security Datasets / Mordor",
+      "sourceUrl": "https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/defense_evasion/host/psh_cmstp_execution_bypassuac.zip",
+      "archiveMember": "psh_cmstp_execution_bypassuac_2020-10-2201543213.json",
+      "fixtureSha256": "DFA829E497D9825AE9C63F459BB8E5E96BA260877010038182429510F1CEBC2D",
+      "collectionType": "Upstream Windows Security JSONL fixture",
+      "attackDescription": "PowerShell activity associated with a CMSTP bypass sequence reaches public IP infrastructure, producing a defensible outbound-connection signal.",
+      "attckTechnique": ["T1071", "T1059.001"]
+    }
+  ]
+}

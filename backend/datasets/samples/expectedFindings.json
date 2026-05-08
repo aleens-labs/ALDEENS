@@ -1,0 +1,216 @@
+{
+  "datasets": {
+    "officeToPowerShell": {
+      "benchmarkSource": {
+        "sourceName": "OTRF Security Datasets",
+        "sourceUrl": "https://github.com/OTRF/Security-Datasets",
+        "benchmarkType": "Public benchmark aligned reference dataset"
+      },
+      "expectedRules": [
+        "DL-WIN-001",
+        "DL-WIN-002",
+        "DL-PS-001",
+        "DL-CR-001",
+        "DL-NET-001"
+      ],
+      "expectedTechniques": [
+        "T1059.001",
+        "T1027",
+        "T1003.001",
+        "T1071"
+      ],
+      "expectedStages": [
+        "Initial Access",
+        "Execution",
+        "Defense Evasion",
+        "Credential Access",
+        "Command and Control"
+      ],
+      "acceptableRiskLabels": ["High", "Critical"],
+      "minimumConfidence": 80,
+      "minimumEvidenceCount": 4,
+      "minimumCitationCount": 5,
+      "requiredSections": [
+        "## Executive Summary",
+        "## Attack Chain Reasoning",
+        "## Deterministic Rule Trace",
+        "## MITRE ATT&CK Coverage",
+        "## Recommended Next Defensive Checks",
+        "## Limitations"
+      ],
+      "expectedExports": ["md", "json", "pdf"],
+      "maxUnexpectedRules": 0
+    },
+    "otrfLsassMemoryDumpComsvcs": {
+      "benchmarkSource": {
+        "sourceName": "OTRF Security Datasets / Mordor",
+        "sourceUrl": "https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/credential_access/host/psh_lsass_memory_dump_comsvcs.zip",
+        "benchmarkType": "Public upstream fixture",
+        "archiveMember": "psh_lsass_memory_dump_comsvcs_2020-10-18T19500924.json"
+      },
+      "expectedRules": [
+        "DL-CR-001",
+        "DL-WIN-002"
+      ],
+      "expectedTechniques": [
+        "T1003.001",
+        "T1059.001"
+      ],
+      "expectedStages": [
+        "Execution",
+        "Credential Access"
+      ],
+      "acceptableRiskLabels": ["Medium", "High", "Critical"],
+      "minimumConfidence": 55,
+      "minimumEvidenceCount": 1,
+      "minimumCitationCount": 2,
+      "requiredSections": [
+        "## Executive Summary",
+        "## Deterministic Rule Trace",
+        "## MITRE ATT&CK Coverage",
+        "## Limitations"
+      ],
+      "expectedExports": ["md", "json", "pdf"],
+      "maxUnexpectedRules": 0
+    },
+    "otrfRegistryRunKeyPersistence": {
+      "benchmarkSource": {
+        "sourceName": "OTRF Security Datasets / Mordor",
+        "sourceUrl": "https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/persistence/host/empire_persistence_registry_modification_run_keys_elevated_user.zip",
+        "benchmarkType": "Public upstream fixture",
+        "archiveMember": "empire_persistence_registry_modification_run_keys_elevated_user_2020-07-22001847.json"
+      },
+      "expectedRules": [
+        "DL-PER-001"
+      ],
+      "expectedTechniques": [
+        "T1547"
+      ],
+      "expectedStages": [
+        "Persistence"
+      ],
+      "acceptableRiskLabels": ["Low", "Medium", "High"],
+      "minimumConfidence": 35,
+      "minimumEvidenceCount": 1,
+      "minimumCitationCount": 2,
+      "requiredSections": [
+        "## Executive Summary",
+        "## Deterministic Rule Trace",
+        "## MITRE ATT&CK Coverage",
+        "## Limitations"
+      ],
+      "expectedExports": ["md", "json", "pdf"],
+      "maxUnexpectedRules": 1
+    },
+    "otrfPowerShellCmstpOutbound": {
+      "benchmarkSource": {
+        "sourceName": "OTRF Security Datasets / Mordor",
+        "sourceUrl": "https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/defense_evasion/host/psh_cmstp_execution_bypassuac.zip",
+        "benchmarkType": "Public upstream fixture",
+        "archiveMember": "psh_cmstp_execution_bypassuac_2020-10-2201543213.json"
+      },
+      "expectedRules": [
+        "DL-NET-001"
+      ],
+      "expectedTechniques": [
+        "T1071"
+      ],
+      "expectedStages": [
+        "Command and Control"
+      ],
+      "acceptableRiskLabels": ["Low", "Medium"],
+      "minimumConfidence": 30,
+      "minimumEvidenceCount": 1,
+      "minimumCitationCount": 2,
+      "requiredSections": [
+        "## Executive Summary",
+        "## Deterministic Rule Trace",
+        "## MITRE ATT&CK Coverage",
+        "## Limitations"
+      ],
+      "expectedExports": ["md", "json", "pdf"],
+      "maxUnexpectedRules": 1
+    },
+    "lsassAccessSignal": {
+      "benchmarkSource": {
+        "sourceName": "OTRF Security Datasets",
+        "sourceUrl": "https://github.com/OTRF/Security-Datasets",
+        "benchmarkType": "Public benchmark aligned reference dataset"
+      },
+      "expectedRules": [
+        "DL-CR-001"
+      ],
+      "expectedTechniques": [
+        "T1003.001"
+      ],
+      "expectedStages": [
+        "Credential Access"
+      ],
+      "acceptableRiskLabels": ["Medium", "High", "Critical"],
+      "minimumConfidence": 45,
+      "minimumEvidenceCount": 1,
+      "minimumCitationCount": 1,
+      "requiredSections": [
+        "## Executive Summary",
+        "## Deterministic Rule Trace",
+        "## Limitations"
+      ],
+      "expectedExports": ["md", "json", "pdf"],
+      "maxUnexpectedRules": 1
+    },
+    "suspiciousOutboundPowerShell": {
+      "benchmarkSource": {
+        "sourceName": "OTRF Security Datasets",
+        "sourceUrl": "https://github.com/OTRF/Security-Datasets",
+        "benchmarkType": "Public benchmark aligned reference dataset"
+      },
+      "expectedRules": [
+        "DL-NET-001"
+      ],
+      "expectedTechniques": [
+        "T1071"
+      ],
+      "expectedStages": [
+        "Command and Control"
+      ],
+      "acceptableRiskLabels": ["Medium", "High"],
+      "minimumConfidence": 40,
+      "minimumEvidenceCount": 1,
+      "minimumCitationCount": 1,
+      "requiredSections": [
+        "## Executive Summary",
+        "## Deterministic Rule Trace",
+        "## Limitations"
+      ],
+      "expectedExports": ["md", "json", "pdf"],
+      "maxUnexpectedRules": 1
+    },
+    "adminPowerShellInventory": {
+      "benchmarkSource": {
+        "sourceName": "Reference ambiguity dataset",
+        "sourceUrl": "https://github.com/OTRF/Security-Datasets",
+        "benchmarkType": "Needs-review reference dataset"
+      },
+      "expectedRules": [
+        "DL-WIN-002"
+      ],
+      "expectedTechniques": [
+        "T1059.001"
+      ],
+      "expectedStages": [
+        "Execution"
+      ],
+      "acceptableRiskLabels": ["Low"],
+      "minimumConfidence": 55,
+      "minimumEvidenceCount": 2,
+      "minimumCitationCount": 2,
+      "requiredSections": [
+        "## Executive Summary",
+        "## Deterministic Rule Trace",
+        "## Limitations"
+      ],
+      "expectedExports": ["md", "json", "pdf"],
+      "maxUnexpectedRules": 0
+    }
+  }
+}

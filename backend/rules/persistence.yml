@@ -1,0 +1,14 @@
+rules:
+  - id: DL-PER-001
+    title: Persistence via registry autorun
+    technique: T1547
+    tactic: Persistence
+    score: 25
+    confidence: 0.18
+  - id: DL-PER-002
+    title: Persistence via scheduled task
+    technique: T1053
+    tactic: Persistence
+    score: 25
+    confidence: 0.18
+

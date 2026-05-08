@@ -1,0 +1,35 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    working_dir: /workspace/backend
+    ports:
+      - "8000:8000"
+    environment:
+      ALEENS_REPORT_MODE: template
+      ALEENS_CORS_ORIGINS: http://localhost:5173,http://127.0.0.1:5173
+    volumes:
+      - ./backend:/workspace/backend
+      - ./memory:/workspace/memory
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    working_dir: /workspace
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_BASE_URL: http://localhost:8000
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend/src:/workspace/src
+      - ./frontend/index.html:/workspace/index.html
+      - ./frontend/package.json:/workspace/package.json
+      - ./frontend/tsconfig.json:/workspace/tsconfig.json
+      - ./frontend/tsconfig.node.json:/workspace/tsconfig.node.json
+      - ./frontend/tailwind.config.ts:/workspace/tailwind.config.ts
+      - ./frontend/postcss.config.js:/workspace/postcss.config.js
+      - ./frontend/vite.config.ts:/workspace/vite.config.ts

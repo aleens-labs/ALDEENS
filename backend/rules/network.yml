@@ -1,0 +1,8 @@
+rules:
+  - id: DL-NET-001
+    title: Suspicious public outbound connection
+    technique: T1071
+    tactic: Command and Control
+    score: 20
+    confidence: 0.16
+
