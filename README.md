@@ -2,7 +2,7 @@
   <img src="frontend/public/branding/aleens-logo.png" alt="Aleens logo" width="360" />
 </p>
 
-# Aleens
+# Aldeens
 
 **Local-first Windows incident triage with evidence-backed reasoning, deterministic scoring, ATT&CK mapping, analyst memory, and professional incident reporting.**
 
