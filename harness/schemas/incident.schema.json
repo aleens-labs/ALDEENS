@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "DefenderLens Incident",
+  "title": "Aleens Incident",
   "type": "object",
   "properties": {
     "datasetName": { "type": "string" },
@@ -11,4 +11,3 @@
   },
   "required": ["events"]
 }
-

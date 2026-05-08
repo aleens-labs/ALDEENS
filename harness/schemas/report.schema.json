@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "DefenderLens Report",
+  "title": "Aleens Report",
   "type": "object",
   "properties": {
     "analysisId": { "type": "string" },
@@ -14,4 +14,3 @@
   },
   "required": ["analysisId", "datasetName", "scores", "findings", "analystBrief"]
 }
-

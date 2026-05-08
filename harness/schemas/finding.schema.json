@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "DefenderLens Finding",
+  "title": "Aleens Finding",
   "type": "object",
   "properties": {
     "ruleId": { "type": "string" },
@@ -11,4 +11,3 @@
   },
   "required": ["ruleId", "title", "reason", "mitreTechnique"]
 }
-
