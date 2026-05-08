@@ -90,7 +90,7 @@ def test_analyze_endpoint_is_rate_limited() -> None:
     main_module.rate_limiter.reset()
     try:
         client = TestClient(main_module.app)
-        payload = {"scenarioName": "officeToPowerShell", "reportMode": "template"}
+        payload = {"datasetName": "officeToPowerShell", "reportMode": "template"}
 
         assert client.post("/api/analyze", json=payload).status_code == 200
         assert client.post("/api/analyze", json=payload).status_code == 200
