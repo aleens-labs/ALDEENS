@@ -1,380 +1,231 @@
-<p align="center">
-  <img src="frontend/public/branding/aleens-logo.png" alt="Aleens logo" width="360" />
-</p>
+<div align="center">
+
+<img src="frontend/public/branding/aleens-logo.png" alt="Aldeens logo" width="320" />
 
 # Aldeens
 
-**Local-first Windows incident triage with evidence-backed reasoning, deterministic scoring, ATT&CK mapping, analyst memory, and professional incident reporting.**
+### Local-first Windows incident triage with evidence-backed reasoning, deterministic scoring, and MITRE ATT&CK mapping
 
-Aleens helps security analysts turn noisy Windows, Sysmon, Defender-style, and compatible JSON telemetry into a structured investigation view. It is built for security research labs, SOC training, internal validation, and local incident-response workflows where evidence traceability matters more than opaque automation.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://www.python.org/)
+[![Node 20+](https://img.shields.io/badge/node-20%2B-green.svg)](https://nodejs.org/)
+[![CI](https://github.com/aleens-labs/ALDEENS/actions/workflows/ci.yml/badge.svg)](https://github.com/aleens-labs/ALDEENS/actions/workflows/ci.yml)
+[![MITRE ATT&CK](https://img.shields.io/badge/MITRE-ATT%26CK%20mapped-red.svg)](https://attack.mitre.org/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-The core pipeline is deterministic. Rules extract evidence, map it to MITRE ATT&CK, reconstruct a timeline, calculate risk and confidence, and produce an auditable report. An optional LLM layer can write a grounded narrative from already-sanitized findings, but it does not decide the detection outcome.
+**Turn noisy Windows telemetry into an auditable, evidence-backed investigation in seconds — without sending a single event to the cloud.**
 
-## Table of Contents
+</div>
 
-- [What Aleens Does](#what-aleens-does)
-- [Who This Is For](#who-this-is-for)
-- [System Architecture](#system-architecture)
-- [Repository Structure](#repository-structure)
-- [Quick Start](#quick-start)
-- [CLI Usage](#cli-usage)
-- [Configuration](#configuration)
-- [Security Defaults](#security-defaults)
-- [Working With Real Telemetry](#working-with-real-telemetry)
-- [Reports and Exports](#reports-and-exports)
-- [Testing](#testing)
-- [Public Release Checklist](#public-release-checklist)
-- [Responsible Use](#responsible-use)
+---
 
-## What Aleens Does
+## Why Aldeens
 
-- Normalizes Windows incident telemetry into a consistent evidence model.
-- Applies deterministic detection rules with traceable rule IDs and score contributions.
-- Maps detections to MITRE ATT&CK techniques and tactics.
-- Reconstructs an attack chain from timestamped evidence.
-- Calculates risk and confidence from reproducible scoring formulas.
-- Preserves raw event references, evidence IDs, command lines, process context, and host/user context when available.
-- Stores analyst feedback and confidence overrides locally.
-- Exports professional reports as PDF, Markdown, and JSON.
-- Supports reference datasets and uploaded telemetry without requiring cloud services.
+Most triage tools hand you a verdict and hide the reasoning. Aldeens does the opposite. Every risk score, every ATT&CK technique, and every line in the report traces back to a specific piece of evidence with a stable rule ID. The core detection pipeline is **fully deterministic and reproducible** — an optional LLM layer can write a narrative, but it never decides the outcome.
 
-## Who This Is For
+If you have ever had to defend a detection in an audit, a post-incident review, or a customer escalation, Aldeens is built for you.
 
-Aleens is intended for:
+| Principle | What it means in practice |
+|-----------|---------------------------|
+| **Evidence first** | Every claim points back to an evidence ID and raw event reference. |
+| **Deterministic before AI** | Detection is rule-based and reproducible. The LLM only narrates sanitized findings. |
+| **Local by default** | Analysis, audit history, and analyst memory stay on disk. No cloud dependency. |
+| **Fail closed** | Production-safe mode refuses to start without an API key. |
+| **Transparent** | Scoring, rule traces, and limitations are all visible to the analyst. |
 
-- SOC analysts who need a fast local triage surface.
-- Security researchers validating detection logic.
-- Blue-team labs and training environments.
-- Hackathon or research demos that require explainable outputs.
-- Teams that want deterministic evidence extraction before using an AI narrative layer.
+---
 
-Aleens is not a managed detection service, EDR replacement, autonomous response engine, or exploit framework.
+## What Aldeens Does
 
-## System Architecture
+- Normalizes Windows, Sysmon, and Defender-style JSON telemetry into one consistent evidence model.
+- Applies deterministic detection rules with traceable rule IDs and explicit score contributions.
+- Maps every detection to a MITRE ATT&CK technique and tactic.
+- Reconstructs the attack chain from timestamped evidence.
+- Calculates risk and confidence from documented, reproducible formulas.
+- Validates rules against exact upstream OTRF / Mordor fixtures with provenance and hashes.
+- Stores analyst feedback and confidence overrides locally as case memory.
+- Exports professional incident reports as PDF, Markdown, and JSON.
 
-```text
-Telemetry Input
-      |
-      v
-Parser and Normalizer
-      |
-      v
-Detection Rule Engine
-      |
-      v
-MITRE ATT&CK Mapper
-      |
-      v
-Attack Chain Builder
-      |
-      v
-Risk and Confidence Scoring
-      |
-      v
-Guardrails and Redaction
-      |
-      v
-Analyst Brief, Reports, Audit Trail, Feedback Memory
+Aldeens is **not** a managed detection service, an EDR replacement, an autonomous response engine, or an exploit framework. It is a defensive triage and evidence-reasoning surface.
+
+---
+
+## Detection Coverage (MITRE ATT&CK)
+
+Aldeens ships with deterministic rules mapped to the following ATT&CK techniques. Coverage is intentionally transparent: what you see here is exactly what the engine detects today.
+
+| Rule ID | Detection | ATT&CK | Tactic |
+|---------|-----------|--------|--------|
+| `DL-WIN-001` | Office application spawned PowerShell | [T1059.001](https://attack.mitre.org/techniques/T1059/001/) | Execution |
+| `DL-WIN-002` | Suspicious parent-child process lineage | [T1059.001](https://attack.mitre.org/techniques/T1059/001/) | Execution |
+| `DL-PS-001` | Encoded / obfuscated PowerShell command | [T1027](https://attack.mitre.org/techniques/T1027/) | Defense Evasion |
+| `DL-CR-001` | LSASS memory access signal | [T1003.001](https://attack.mitre.org/techniques/T1003/001/) | Credential Access |
+| `DL-NET-001` | Suspicious public outbound from script/LOLBIN | [T1071](https://attack.mitre.org/techniques/T1071/) | Command and Control |
+| `DL-PER-001` | Registry run-key persistence | [T1547](https://attack.mitre.org/techniques/T1547/) | Persistence |
+| `DL-PER-002` | Scheduled-task persistence | [T1053](https://attack.mitre.org/techniques/T1053/) | Persistence |
+
+> Scoring formulas, confidence logic, and guardrails are documented in [`RULES.md`](RULES.md). Planned coverage is tracked on the [roadmap](ROADMAP.md).
+
+---
+
+## Benchmarks
+
+Aldeens validates its rules against **exact upstream OTRF / Mordor JSONL fixtures** (not synthetic data), bundled with provenance and hashes. The evaluator compares actual rule output against per-dataset expectations and reports rule recall, ATT&CK recall, citation coverage, and an aggregate benchmark score.
+
+Run the public pack yourself:
+
+```bash
+python -m app.cli benchmarks public --report-mode template
 ```
 
-Design principles:
+<!-- BENCHMARK RESULTS: Maintainers — paste your latest reproducible numbers here after running the command above.
+| Dataset | Rule recall | ATT&CK recall | Result |
+|---------|-------------|---------------|--------|
+| otrfLsassMemoryDumpComsvcs | ... | ... | PASS |
+| otrfRegistryRunKeyPersistence | ... | ... | PASS |
+| otrfPowerShellCmstpOutbound | ... | ... | PASS |
+Aggregate score: ...
+-->
 
-- **Evidence first:** every important claim should point back to evidence IDs or raw event references.
-- **Deterministic before AI:** LLM reporting is optional and grounded in structured findings.
-- **Local by default:** runtime analysis, audit history, and feedback memory stay on disk.
-- **Fail closed in production:** production-safe mode requires an API key before the backend starts.
-- **Research-grade transparency:** scoring, rule traces, and limitations are visible to the analyst.
+> _Reproducible benchmark numbers are published per release. See [`EVALUATION.md`](EVALUATION.md) for the full evaluation methodology._
 
-## Repository Structure
+---
 
-```text
-.
-├── backend/
-│   ├── app/                    # FastAPI backend, analysis pipeline, CLI
-│   ├── datasets/               # Reference dataset metadata and provenance
-│   ├── tests/                  # Backend and report-generation tests
-│   └── runtime/                # Local generated analysis data, ignored by git
-├── frontend/
-│   ├── public/branding/        # Aleens logo and public assets
-│   └── src/                    # React + Vite frontend
-├── docs/                       # Supporting documentation
-├── memory/                     # Local analyst memory, ignored by git
-├── docker-compose.yml          # Local full-stack runtime
-├── SECURITY.md                 # Vulnerability reporting and security posture
-└── README.md
-```
+## Demo
+
+<!-- SCREENSHOT: Add a dashboard screenshot or demo GIF here for maximum impact.
+Place the file in docs/assets/ and reference it like:
+![Aldeens dashboard](docs/assets/dashboard.png)
+-->
+
+_A 60-second walkthrough is documented in [`DEMO.md`](DEMO.md)._
+
+---
 
 ## Quick Start
 
 ### Prerequisites
 
-- Python 3.11+
-- Node.js 20+
-- npm
-- Git
-- Optional: Docker Desktop
+Python 3.11+, Node.js 20+, npm, Git. Docker Desktop is optional.
 
-### Option A: Run With Docker Compose
+### Option A — Docker Compose (fastest)
 
-From the repository root:
-
-```powershell
+```bash
 docker-compose up --build
 ```
 
-Open:
+- Frontend: http://localhost:5173
+- Backend health: http://localhost:8000/api/health
 
-- Frontend: [http://localhost:5173](http://localhost:5173)
-- Backend health: [http://localhost:8000/api/health](http://localhost:8000/api/health)
+### Option B — Manual
 
-### Option B: Run Backend and Frontend Manually
-
-Backend:
-
-```powershell
+```bash
+# Backend
 cd backend
 python -m pip install -e .[dev]
 uvicorn app.main:app --reload
-```
 
-Frontend:
-
-```powershell
+# Frontend (new terminal)
 cd frontend
 npm install
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173).
+Then open http://localhost:5173.
+
+---
 
 ## CLI Usage
 
-The backend includes a local CLI for analysts who want terminal-first workflows.
+Aldeens ships a terminal-first CLI for analysts who live in the shell.
 
-Install the backend package:
-
-```powershell
+```bash
 cd backend
 python -m pip install -e .[dev]
+
+python -m app.cli datasets                                   # list reference datasets
+python -m app.cli analyze --dataset officeToPowerShell       # run an analysis
+python -m app.cli audit --limit 5                            # view recent audit records
+python -m app.cli export --latest --format pdf               # export latest report
+python -m app.cli benchmarks public --report-mode template   # run the OTRF benchmark pack
 ```
 
-List available reference datasets:
+Analyze your own telemetry:
 
-```powershell
-python -m app.cli datasets
+```bash
+python -m app.cli analyze --input ./events.json --dataset-name incident-001 --markdown-out ./incident-001.md
 ```
 
-Run an analysis:
-
-```powershell
-python -m app.cli analyze --dataset officeToPowerShell --report-mode template
-```
-
-View recent audit records:
-
-```powershell
-python -m app.cli audit --limit 5
-```
-
-Export the latest analysis:
-
-```powershell
-python -m app.cli export --latest --format pdf
-python -m app.cli export --latest --format json
-python -m app.cli export --latest --format md
-```
-
-Export a specific analysis:
-
-```powershell
-python -m app.cli export --analysis-id b6091f10eb9b --format pdf
-```
-
-Analyze your own telemetry file:
-
-```powershell
-python -m app.cli analyze --input C:\path\to\events.json --dataset-name incident-001 --markdown-out C:\path\to\incident-001.md
-```
-
-Run the public benchmark pack:
-
-```powershell
-python -m app.cli benchmarks public --report-mode template
-```
-
-Note: do not type angle-bracket placeholders such as `<analysis-id>` in PowerShell. Use a real analysis ID from the audit output.
-
-## Configuration
-
-Create a local environment file from the example:
-
-```powershell
-Copy-Item backend\.env.example backend\.env
-```
-
-Important backend variables:
-
-| Variable | Purpose | Recommended value |
-| --- | --- | --- |
-| `ALEENS_PRODUCTION_SAFE` | Enables fail-closed production safety checks | `true` for public or shared environments |
-| `ALEENS_API_KEY` | Required API key when production-safe mode is enabled | A long random secret |
-| `ALEENS_CORS_ORIGINS` | Allowed frontend origins | `http://localhost:5173` for local dev |
-| `ALEENS_MAX_UPLOAD_BYTES` | Maximum upload size | Keep bounded for public use |
-| `ALEENS_ANALYZE_RATE_LIMIT` | Rate limit for analysis calls | Example: `10/minute` |
-| `ALEENS_UPLOAD_RATE_LIMIT` | Rate limit for upload calls | Example: `5/minute` |
-| `ALEENS_AUDIT_LIMIT_MAX` | Maximum page size for audit pagination | Example: `100` |
-| `OPENAI_API_KEY` | Optional LLM narrative provider key | Leave unset for deterministic-only mode |
-| `ALEENS_LLM_MODEL` | Optional narrative model name | Configure only if using LLM mode |
-
-Important frontend variables:
-
-| Variable | Purpose |
-| --- | --- |
-| `VITE_API_BASE_URL` | Backend API base URL |
-| `VITE_ALEENS_API_KEY` | Mirrors `ALEENS_API_KEY` for authenticated local frontend calls |
-
-Example local development values:
-
-```powershell
-$env:ALEENS_CORS_ORIGINS="http://localhost:5173"
-$env:ALEENS_ANALYZE_RATE_LIMIT="10/minute"
-$env:ALEENS_UPLOAD_RATE_LIMIT="5/minute"
-$env:ALEENS_AUDIT_LIMIT_MAX="100"
-```
-
-Example production-safe values:
-
-```powershell
-$env:ALEENS_PRODUCTION_SAFE="true"
-$env:ALEENS_API_KEY="replace-with-a-long-random-secret"
-$env:VITE_ALEENS_API_KEY="replace-with-the-same-secret"
-$env:ALEENS_CORS_ORIGINS="https://your-trusted-frontend.example"
-```
-
-## Security Defaults
-
-Aleens is designed to be safe for public source release, but local runtime secrets and generated artifacts must stay out of git.
-
-Current security posture:
-
-- `.env` files are ignored.
-- Runtime analysis output is ignored.
-- SQLite databases and local memory artifacts are ignored.
-- Production-safe mode fails closed if `ALEENS_API_KEY` is missing.
-- Authenticated deployments require `X-API-Key` or `Authorization: Bearer ...`.
-- Analyze and upload endpoints are rate-limited.
-- Audit pagination is bounded.
-- Upload size and JSON parsing are validated by the backend.
-- CORS should be restricted to explicit trusted origins for any shared deployment.
-
-Before exposing the backend outside localhost:
-
-1. Set `ALEENS_PRODUCTION_SAFE=true`.
-2. Set a strong `ALEENS_API_KEY`.
-3. Configure the frontend with `VITE_ALEENS_API_KEY`.
-4. Restrict `ALEENS_CORS_ORIGINS`.
-5. Keep rate limits enabled.
-6. Never commit `.env`, runtime databases, API keys, or generated incident data.
-
-See [SECURITY.md](SECURITY.md) for vulnerability reporting guidance.
+---
 
 ## Working With Real Telemetry
 
-Aleens supports reference datasets and uploaded Windows-style telemetry. Reference datasets are included so the pipeline can be tested immediately, but production analysts should upload their own exported telemetry for real investigations.
+Aldeens accepts reference datasets and your own exported Windows-style telemetry. Provide as many of these fields as possible — Aldeens never invents missing data, and reports explicitly flag incomplete telemetry.
 
-Supported telemetry should include as many of these fields as possible:
+```jsonc
+{
+  "timestamp": "2025-01-10T14:22:31Z",
+  "hostname": "WKSTN-01",
+  "username": "jdoe",
+  "process_name": "powershell.exe",
+  "parent_process_name": "WINWORD.EXE",
+  "command_line": "powershell -enc <base64>",
+  "process_id": 4821,
+  "parent_process_id": 3310,
+  "image_path": "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+  "src_ip": "10.0.0.5",
+  "dst_ip": "203.0.113.10",
+  "event_id": 1
+}
+```
 
-- timestamp
-- process name
-- parent process name
-- command line
-- process ID and parent process ID
-- hostname
-- username and domain
-- image path and parent image path
-- source and destination IPs
-- event ID or raw event reference
+Reference dataset provenance is documented in `backend/datasets/provenance.json`.
 
-If fields are missing, Aleens does not invent them. Reports explicitly show `Not available` or explain that telemetry was incomplete.
-
-Reference dataset provenance is documented in [backend/datasets/provenance.json](backend/datasets/provenance.json).
+---
 
 ## Reports and Exports
 
-Aleens can export:
+Aldeens exports analyst-ready PDF, Markdown, and JSON reports. Every report preserves: executive summary, risk and confidence score, analyst verdict, ATT&CK mapping, timeline, process tree, command-line evidence, host/user context, detection details, analyst feedback history, recommended next steps, and telemetry limitations.
 
-- PDF incident reports for analyst handoff.
-- Markdown reports for notes, tickets, and documentation.
-- JSON reports for downstream tooling.
+---
 
-Reports preserve:
+## Security & Production Hardening
 
-- executive summary
-- risk and confidence score
-- final analyst verdict
-- MITRE ATT&CK mapping
-- timeline
-- process tree
-- command-line evidence
-- host and user context
-- detection details
-- analyst feedback history
-- recommended investigation steps
-- telemetry limitations
+Aldeens is designed to be safe for public release. Local secrets and generated artifacts stay out of git by default.
+
+- `.env` files, runtime output, SQLite databases, and local memory artifacts are git-ignored.
+- Production-safe mode **fails closed** if `ALEENS_API_KEY` is missing.
+- Authenticated deployments require `X-API-Key` or `Authorization: Bearer ...`.
+- Analyze and upload endpoints are rate-limited; audit pagination is bounded.
+- CORS must be restricted to explicit trusted origins for any shared deployment.
+
+Before exposing the backend beyond localhost, set `ALEENS_PRODUCTION_SAFE=true`, a strong `ALEENS_API_KEY`, restrict `ALEENS_CORS_ORIGINS`, and keep rate limits enabled. See [`SECURITY.md`](SECURITY.md) for the full posture and vulnerability reporting.
+
+The full configuration reference lives in `.env.example`.
+
+---
 
 ## Testing
 
-Backend tests:
-
-```powershell
-cd backend
-python -m pytest
+```bash
+cd backend && python -m pytest                 # backend + report tests
+cd frontend && npm install && npm run build    # frontend build
 ```
 
-CLI tests:
+---
 
-```powershell
-cd backend
-python -m pytest tests\testCli.py -q
-```
+## Contributing
 
-Frontend build:
+Contributions are welcome — new detection rules, dataset fixtures, parsers, and docs especially. See [`CONTRIBUTING.md`](CONTRIBUTING.md) and the [`ROADMAP.md`](ROADMAP.md) for where the project is headed.
 
-```powershell
-cd frontend
-npm install
-npm run build
-```
-
-Security and hygiene checks before public push:
-
-```powershell
-git status --short
-git ls-files
-git grep -n -I "sk-"
-git grep -n -I "OPENAI_API_KEY"
-```
-
-Variable names in examples are expected. Real secret values must not appear in tracked files.
-
-## Public Release Checklist
-
-Use this checklist before pushing to a public GitHub repository:
-
-- [ ] `git status --short` is clean except intentional changes.
-- [ ] No `.env` files are tracked.
-- [ ] No SQLite databases are tracked.
-- [ ] No `backend/runtime/` output is tracked.
-- [ ] No `node_modules/`, virtual environments, or build artifacts are tracked.
-- [ ] No API keys, bearer tokens, or provider secrets appear in tracked files.
-- [ ] `README.md` explains setup, security, CLI, and report outputs.
-- [ ] `SECURITY.md` exists.
-- [ ] `.gitignore` covers secrets and runtime artifacts.
-- [ ] Backend tests pass.
-- [ ] Frontend build passes if frontend changes were made.
+---
 
 ## Responsible Use
 
-Aleens is a defensive security research and incident triage tool. Use it only on telemetry you are authorized to analyze. The project does not provide exploit generation, malware development, credential theft, persistence guidance, or offensive automation.
+Aldeens is a defensive security research and incident triage tool. Use it only on telemetry you are authorized to analyze. The project does not provide exploit generation, malware development, credential theft, persistence guidance, or offensive automation. When using optional LLM reporting, review the generated narrative before sharing externally — the deterministic evidence, rule trace, and raw references remain the source of truth.
 
-When using optional LLM reporting, review the generated narrative before sharing externally. The deterministic evidence, rule trace, and raw references remain the source of truth.
+---
+
+## License
+
+Released under the [MIT License](LICENSE).
