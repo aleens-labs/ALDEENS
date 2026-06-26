@@ -19,7 +19,7 @@ export interface AnalystOverrideState {
   savedAt: string;
 }
 
-export interface AleensAppState {
+export interface AldeensAppState {
   datasets: DatasetSummary[];
   status: AppStatus | null;
   selectedDataset: string;
@@ -53,22 +53,22 @@ export interface AleensAppState {
   downloadExport: (format: 'json' | 'md' | 'pdf') => Promise<void>;
 }
 
-const AppStateContext = createContext<AleensAppState | null>(null);
+const AppStateContext = createContext<AldeensAppState | null>(null);
 
 export function AppStateProvider({
   value,
   children,
 }: {
-  value: AleensAppState;
+  value: AldeensAppState;
   children: React.ReactNode;
 }) {
   return <AppStateContext.Provider value={value}>{children}</AppStateContext.Provider>;
 }
 
-export function useAleensApp() {
+export function useAldeensApp() {
   const context = useContext(AppStateContext);
   if (!context) {
-    throw new Error('useAleensApp must be used within AppStateProvider.');
+    throw new Error('useAldeensApp must be used within AppStateProvider.');
   }
   return context;
 }

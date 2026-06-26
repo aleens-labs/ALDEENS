@@ -3,9 +3,9 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "aleens-backend"
+name = "aldeens-backend"
 version = "0.1.0"
-description = "Aleens backend for deterministic Windows incident triage"
+description = "Aldeens backend for deterministic Windows incident triage"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
@@ -27,7 +27,7 @@ dev = [
 ]
 
 [project.scripts]
-aleens = "app.cli:main"
+aldeens = "app.cli:main"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

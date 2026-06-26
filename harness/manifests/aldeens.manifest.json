@@ -1,5 +1,5 @@
 {
-  "name": "Aleens",
+  "name": "Aldeens",
   "positioning": "From noisy Windows logs to evidence-backed incident reasoning.",
   "commands": [
     "docker-compose up --build",

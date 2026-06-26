@@ -2,7 +2,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 
 import { APP_LOGO_PATH, APP_NAME, APP_VERSION } from '../../lib/branding';
-import { useAleensApp } from '../../router/AppStateContext';
+import { useAldeensApp } from '../../router/AppStateContext';
 import { NAV_ROUTES } from '../../router/navigation';
 import { RiskBadge } from '../shared/RiskBadge';
 
@@ -12,7 +12,7 @@ interface SidebarProps {
 }
 
 export function Sidebar({ collapsed, onToggle }: SidebarProps) {
-  const { analysis } = useAleensApp();
+  const { analysis } = useAldeensApp();
 
   return (
     <aside className={`app-sidebar ${collapsed ? 'is-collapsed' : ''}`}>

@@ -4,7 +4,7 @@ import { AlertTriangle, Bot, DatabaseZap, ShieldCheck } from 'lucide-react';
 
 import { APP_NAME } from '../lib/branding';
 import { TacticBadge } from '../components/shared/TacticBadge';
-import { useAleensApp } from '../router/AppStateContext';
+import { useAldeensApp } from '../router/AppStateContext';
 
 export function IntakePage() {
   const {
@@ -19,7 +19,7 @@ export function IntakePage() {
     runAnalysis,
     runAmbiguousDemo,
     runPublicBenchmarkPack,
-  } = useAleensApp();
+  } = useAldeensApp();
 
   const selected = datasets.find((item) => item.datasetId === selectedDataset) ?? null;
 

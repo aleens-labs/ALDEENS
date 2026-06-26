@@ -9,7 +9,7 @@ import { CountUpNumber } from '../components/shared/CountUpNumber';
 import { EmptyState } from '../components/shared/EmptyState';
 import { RiskBadge } from '../components/shared/RiskBadge';
 import { TacticBadge } from '../components/shared/TacticBadge';
-import { useAleensApp } from '../router/AppStateContext';
+import { useAldeensApp } from '../router/AppStateContext';
 
 function buildSparklinePath(points: number[], width: number, height: number) {
   if (points.length < 2) {
@@ -29,7 +29,7 @@ function buildSparklinePath(points: number[], width: number, height: number) {
 }
 
 export function DashboardPage() {
-  const { analysis, analystOverride, audit, loadAnalysisById } = useAleensApp();
+  const { analysis, analystOverride, audit, loadAnalysisById } = useAldeensApp();
 
   if (!analysis) {
     return (

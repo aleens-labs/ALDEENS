@@ -117,7 +117,7 @@
       "sourceName": "Microsoft Defender Incident Export",
       "sourceUrl": "https://learn.microsoft.com/defender-endpoint/api/",
       "collectionType": "Defender-style export",
-    "attackDescription": "Normalize device events and alerts into the Aleens evidence schema.",
+    "attackDescription": "Normalize device events and alerts into the Aldeens evidence schema.",
       "attckTechnique": ["T1003.001", "T1071", "T1547"]
     }
   ]

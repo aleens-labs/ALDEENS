@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 
-import { useAleensApp } from '../../router/AppStateContext';
+import { useAldeensApp } from '../../router/AppStateContext';
 import { Sidebar } from './Sidebar';
 import { TopHeader } from './TopHeader';
 
 export function AppShell() {
   const [collapsed, setCollapsed] = useState(false);
-  const { busy, error, clearError } = useAleensApp();
+  const { busy, error, clearError } = useAldeensApp();
 
   return (
     <div className="app-shell">

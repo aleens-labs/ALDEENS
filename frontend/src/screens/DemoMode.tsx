@@ -26,10 +26,10 @@ export function DemoMode({
   return (
     <section className="hero-shell animate-rise">
       <div className="max-w-3xl">
-        <p className="eyebrow">Aleens - Windows Incident Triage Assistant</p>
+        <p className="eyebrow">Aldeens - Windows Incident Triage Assistant</p>
         <h1 className="hero-title">Turn confusing Windows security logs into a prioritized incident summary.</h1>
         <p className="hero-copy">
-          Aleens helps analysts answer three questions faster: what likely happened, how urgent it is, and which
+          Aldeens helps analysts answer three questions faster: what likely happened, how urgent it is, and which
           log evidence supports that conclusion. Deterministic evidence extraction, ATT&amp;CK mapping, scoring, audit
           logging, and analyst memory come first; an optional LLM only rewrites those structured findings into a clearer
           narrative.

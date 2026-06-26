@@ -13,9 +13,11 @@ import type {
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8000';
 const LEGACY_ENV_PREFIX = ['DEFENDER', 'LENS'].join('');
+const PREVIOUS_ENV_PREFIX = ['AL', 'EENS'].join('');
 const ENV = import.meta.env as Record<string, string | undefined>;
 const API_KEY = (
-  ENV.VITE_ALEENS_API_KEY ??
+  ENV.VITE_ALDEENS_API_KEY ??
+  ENV[`VITE_${PREVIOUS_ENV_PREFIX}_API_KEY`] ??
   ENV[`VITE_${LEGACY_ENV_PREFIX}_API_KEY`] ??
   ''
 ).trim();
@@ -161,7 +163,7 @@ export async function downloadExport(analysisId: string, format: 'json' | 'md' |
 
   const contentDisposition = response.headers.get('Content-Disposition') ?? '';
   const match = /filename="?([^"]+)"?/i.exec(contentDisposition);
-  anchor.download = match?.[1] ?? `aleens-export.${format}`;
+  anchor.download = match?.[1] ?? `aldeens-export.${format}`;
   document.body.appendChild(anchor);
   anchor.click();
   document.body.removeChild(anchor);

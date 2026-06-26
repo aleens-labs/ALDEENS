@@ -434,7 +434,11 @@ def build_parser() -> argparse.ArgumentParser:
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
 
-    datasets_parser = subparsers.add_parser("datasets", help="List reference incident datasets.")
+    datasets_parser = subparsers.add_parser(
+        "datasets",
+        aliases=["scenarios"],
+        help="List reference incident datasets.",
+    )
     datasets_parser.add_argument("--json", action="store_true", help="Print raw JSON instead of a table.")
     datasets_parser.set_defaults(func=_cmd_datasets)
 

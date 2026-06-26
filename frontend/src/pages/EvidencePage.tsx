@@ -2,7 +2,7 @@ import { Fragment, useMemo, useState } from 'react';
 
 import type { Evidence } from '../lib/types';
 import { EmptyState } from '../components/shared/EmptyState';
-import { useAleensApp } from '../router/AppStateContext';
+import { useAldeensApp } from '../router/AppStateContext';
 
 interface VerificationState {
   status: 'verified' | 'mismatch' | 'missing';
@@ -24,7 +24,7 @@ async function computeEvidenceHash(item: Evidence) {
 }
 
 export function EvidencePage() {
-  const { analysis } = useAleensApp();
+  const { analysis } = useAldeensApp();
   const [query, setQuery] = useState('');
   const [expandedRows, setExpandedRows] = useState<Record<string, boolean>>({});
   const [verifications, setVerifications] = useState<Record<string, VerificationState>>({});

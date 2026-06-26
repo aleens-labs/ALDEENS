@@ -109,6 +109,6 @@ def test_production_safe_requires_api_key() -> None:
     try:
         validate_production_safe(settings)
     except RuntimeError as exc:
-        assert "ALEENS_API_KEY" in str(exc)
+        assert "ALDEENS_API_KEY" in str(exc)
     else:
         raise AssertionError("production-safe mode should fail closed without an API key")

@@ -1,3 +1,5 @@
+name: aldeens
+
 services:
   backend:
     build:
@@ -7,8 +9,8 @@ services:
     ports:
       - "8000:8000"
     environment:
-      ALEENS_REPORT_MODE: template
-      ALEENS_CORS_ORIGINS: http://localhost:5173,http://127.0.0.1:5173
+      ALDEENS_REPORT_MODE: template
+      ALDEENS_CORS_ORIGINS: http://localhost:5173,http://127.0.0.1:5173
     volumes:
       - ./backend:/workspace/backend
       - ./memory:/workspace/memory
@@ -26,6 +28,7 @@ services:
       - backend
     volumes:
       - ./frontend/src:/workspace/src
+      - ./frontend/public:/workspace/public
       - ./frontend/index.html:/workspace/index.html
       - ./frontend/package.json:/workspace/package.json
       - ./frontend/tsconfig.json:/workspace/tsconfig.json

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Aleens Incident",
+  "title": "Aldeens Incident",
   "type": "object",
   "properties": {
     "datasetName": { "type": "string" },

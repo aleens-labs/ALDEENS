@@ -2,10 +2,10 @@ import { useState } from 'react';
 
 import { ProgressBar } from '../components/shared/ProgressBar';
 import { EmptyState } from '../components/shared/EmptyState';
-import { useAleensApp } from '../router/AppStateContext';
+import { useAldeensApp } from '../router/AppStateContext';
 
 export function ScoringPage() {
-  const { analysis, evaluation } = useAleensApp();
+  const { analysis, evaluation } = useAldeensApp();
   const [expandedLabel, setExpandedLabel] = useState<string | null>(null);
 
   if (!analysis) {

@@ -1,6 +1,6 @@
 # Security Policy
 
-Aleens is built for defensive telemetry analysis only.
+Aldeens is built for defensive telemetry analysis only.
 
 ## Allowed Use
 
@@ -31,18 +31,18 @@ Aleens is built for defensive telemetry analysis only.
 - Reference incident datasets are not production data.
 - Local runtime output is stored under `backend/runtime/`.
 - Analyst feedback is stored locally in SQLite and exported snapshots under `memory/`.
-- For public or shared deployments, set `ALEENS_API_KEY`, keep `.env` out of version control, and restrict allowed frontend origins.
+- For public or shared deployments, set `ALDEENS_API_KEY`, keep `.env` out of version control, and restrict allowed frontend origins.
 
 ## Publish-Safe Runtime Settings
 
-- `ALEENS_PRODUCTION_SAFE=true` forces the backend to fail closed if `ALEENS_API_KEY` is missing.
-- `ALEENS_CORS_ORIGINS` should list only trusted frontend origins.
-- `ALEENS_ANALYZE_RATE_LIMIT` and `ALEENS_UPLOAD_RATE_LIMIT` should remain enabled in any shared deployment.
+- `ALDEENS_PRODUCTION_SAFE=true` forces the backend to fail closed if `ALDEENS_API_KEY` is missing.
+- `ALDEENS_CORS_ORIGINS` should list only trusted frontend origins.
+- `ALDEENS_ANALYZE_RATE_LIMIT` and `ALDEENS_UPLOAD_RATE_LIMIT` should remain enabled in any shared deployment.
 - `/api/audit` is paginated and bounded to reduce accidental over-disclosure and memory pressure.
 
 ## Reporting A Vulnerability
 
-If you discover a security issue in Aleens:
+If you discover a security issue in Aldeens:
 
 - do not publish live secrets, tokens, or exploit instructions
 - capture the affected version, route, and reproduction steps

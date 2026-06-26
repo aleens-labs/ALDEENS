@@ -6,7 +6,7 @@ import { getAnalysis } from '../lib/api';
 import type { AnalysisResult } from '../lib/types';
 import { EmptyState } from '../components/shared/EmptyState';
 import { RiskBadge } from '../components/shared/RiskBadge';
-import { useAleensApp } from '../router/AppStateContext';
+import { useAldeensApp } from '../router/AppStateContext';
 
 type RiskFilter = 'all' | 'critical' | 'high' | 'medium' | 'low';
 
@@ -32,7 +32,7 @@ export function AuditPage() {
     setCompareSelection,
     loadAnalysisById,
     loadMoreAudit,
-  } = useAleensApp();
+  } = useAldeensApp();
   const [query, setQuery] = useState('');
   const [riskFilter, setRiskFilter] = useState<RiskFilter>('all');
   const [comparison, setComparison] = useState<[AnalysisResult, AnalysisResult] | null>(null);

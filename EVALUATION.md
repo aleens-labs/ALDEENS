@@ -1,6 +1,6 @@
 # Evaluation Guide
 
-## How Judges Can Evaluate Aleens
+## How Judges Can Evaluate Aldeens
 
 1. Run the `officeToPowerShell` dataset.
 2. Confirm the evidence board contains normalized Windows telemetry fields.
@@ -15,7 +15,7 @@
 11. Confirm an audit entry is written locally.
 12. Submit analyst feedback and confirm it appears as local memory context on rerun.
 13. Run the **Public OTRF Fixture Pack** and confirm the aggregate benchmark score is reproducible.
-14. Run `adminPowerShellInventory` and confirm Aleens can keep a suspicious-looking shell chain in low-risk, review-oriented territory.
+14. Run `adminPowerShellInventory` and confirm Aldeens can keep a suspicious-looking shell chain in low-risk, review-oriented territory.
 
 ## Test Cases
 
@@ -83,6 +83,6 @@
 - The hero demo chain is still a derived dataset designed for presentation clarity.
 - The bundled OTRF/Mordor fixtures are exact upstream event streams, but they are still public lab telemetry rather than production enterprise captures.
 - The confidence score depends on available telemetry completeness.
-- Aleens currently uses deterministic scoring and optional structured LLM narration rather than a learned anomaly model.
+- Aldeens currently uses deterministic scoring and optional structured LLM narration rather than a learned anomaly model.
 - The current build is focused on incident triage, not response automation.
 - ATT&CK mapping is technique-focused and intentionally narrow for demo clarity.

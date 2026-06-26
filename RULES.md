@@ -1,4 +1,4 @@
-# Aleens Rules and Scoring
+# Aldeens Rules and Scoring
 
 ## Deterministic Detection Rules
 

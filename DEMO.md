@@ -1,4 +1,4 @@
-# Aleens Demo
+# Aldeens Demo
 
 ## Judge Flow
 
@@ -28,7 +28,7 @@
 
 ## Recommended Talk Track
 
-- Aleens does not start from an LLM. It starts from telemetry normalization.
+- Aldeens does not start from an LLM. It starts from telemetry normalization.
 - The product is not a black-box classifier. The core triage decision is deterministic and inspectable.
 - Every claim in the brief is backed by one or more deterministic findings.
 - The risk score is reproducible and documented in `RULES.md`.

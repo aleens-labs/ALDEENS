@@ -4,7 +4,7 @@ import { Check, Clipboard, Download, FileJson, FileText } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 
 import { EmptyState } from '../components/shared/EmptyState';
-import { useAleensApp } from '../router/AppStateContext';
+import { useAldeensApp } from '../router/AppStateContext';
 
 export function AnalystBriefPage() {
   const {
@@ -13,7 +13,7 @@ export function AnalystBriefPage() {
     downloadExport,
     handleFeedback,
     saveAnalystOverride,
-  } = useAleensApp();
+  } = useAldeensApp();
   const [copied, setCopied] = useState(false);
   const [feedbackNote, setFeedbackNote] = useState('');
   const [overrideValue, setOverrideValue] = useState(analystOverride?.value ?? 75);

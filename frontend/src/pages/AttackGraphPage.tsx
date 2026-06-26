@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 
 import type { ChainStep, TacticHit } from '../lib/types';
-import { useAleensApp } from '../router/AppStateContext';
+import { useAldeensApp } from '../router/AppStateContext';
 import { EmptyState } from '../components/shared/EmptyState';
 import { TacticBadge } from '../components/shared/TacticBadge';
 
@@ -27,7 +27,7 @@ function stageTechnique(step: ChainStep, tactics: TacticHit[]) {
 }
 
 export function AttackGraphPage() {
-  const { analysis } = useAleensApp();
+  const { analysis } = useAldeensApp();
   const [activeStage, setActiveStage] = useState<string | null>(null);
 
   const steps = analysis?.attackChain ?? [];

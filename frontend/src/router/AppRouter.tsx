@@ -29,7 +29,7 @@ import type {
 import { AppShell } from '../components/layout/AppShell';
 import { EmptyState } from '../components/shared/EmptyState';
 import { APP_NAME } from '../lib/branding';
-import { AppStateProvider, type AleensAppState, type AnalystOverrideState } from './AppStateContext';
+import { AppStateProvider, type AldeensAppState, type AnalystOverrideState } from './AppStateContext';
 
 const DashboardPage = lazy(() => import('../pages/DashboardPage').then((module) => ({ default: module.DashboardPage })));
 const IntakePage = lazy(() => import('../pages/IntakePage').then((module) => ({ default: module.IntakePage })));
@@ -41,7 +41,7 @@ const MitrePage = lazy(() => import('../pages/MitrePage').then((module) => ({ de
 const AnalystBriefPage = lazy(() => import('../pages/AnalystBriefPage').then((module) => ({ default: module.AnalystBriefPage })));
 const AuditPage = lazy(() => import('../pages/AuditPage').then((module) => ({ default: module.AuditPage })));
 
-const LAST_ANALYSIS_KEY = 'aleens.lastAnalysisId';
+const LAST_ANALYSIS_KEY = 'Aldeens.lastAnalysisId';
 const AUDIT_PAGE_SIZE = 50;
 
 function AppRouterController() {
@@ -321,7 +321,7 @@ function AppRouterController() {
     await fetchExport(analysis.analysisId, format);
   }
 
-  const appState = useMemo<AleensAppState>(
+  const appState = useMemo<AldeensAppState>(
     () => ({
       datasets,
       status,

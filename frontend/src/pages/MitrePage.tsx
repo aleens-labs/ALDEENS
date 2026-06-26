@@ -1,7 +1,7 @@
 import { EmptyState } from '../components/shared/EmptyState';
 import { ProgressBar } from '../components/shared/ProgressBar';
 import { TacticBadge } from '../components/shared/TacticBadge';
-import { useAleensApp } from '../router/AppStateContext';
+import { useAldeensApp } from '../router/AppStateContext';
 
 const KILL_CHAIN_PHASES = [
   'Initial Access',
@@ -14,7 +14,7 @@ const KILL_CHAIN_PHASES = [
 ];
 
 export function MitrePage() {
-  const { analysis } = useAleensApp();
+  const { analysis } = useAldeensApp();
   const tactics = analysis?.tactics ?? [];
 
   if (!analysis || tactics.length === 0) {

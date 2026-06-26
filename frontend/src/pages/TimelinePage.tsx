@@ -1,5 +1,5 @@
 import { EmptyState } from '../components/shared/EmptyState';
-import { useAleensApp } from '../router/AppStateContext';
+import { useAldeensApp } from '../router/AppStateContext';
 
 const TACTIC_TONE: Record<string, string> = {
   'Initial Access': 'timeline-initial-access',
@@ -27,7 +27,7 @@ function relativeOffset(base: string | null, ts: string | null) {
 }
 
 export function TimelinePage() {
-  const { analysis } = useAleensApp();
+  const { analysis } = useAldeensApp();
   const steps = analysis?.attackChain ?? [];
 
   if (!analysis || steps.length === 0) {

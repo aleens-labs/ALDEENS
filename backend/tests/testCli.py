@@ -23,6 +23,12 @@ def test_cli_datasets_lists_bundled_registry() -> None:
     assert "officeToPowerShell" in output
 
 
+def test_cli_scenarios_alias_lists_bundled_registry() -> None:
+    output = _run_cli(["scenarios"])
+    assert "Dataset Library" in output
+    assert "officeToPowerShell" in output
+
+
 def test_cli_analyze_dataset_prints_summary() -> None:
     output = _run_cli(["analyze", "--dataset", "officeToPowerShell", "--report-mode", "template"])
     assert "Analysis Complete" in output
@@ -53,7 +59,7 @@ def test_cli_export_markdown_writes_file(tmp_path: Path) -> None:
 
     assert "Export Complete" in output
     assert target.exists()
-    assert "Aleens Incident Report" in target.read_text(encoding="utf-8")
+    assert "Aldeens Incident Report" in target.read_text(encoding="utf-8")
 
 
 def test_cli_audit_prints_page_summary() -> None:

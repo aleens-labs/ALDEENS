@@ -2,11 +2,11 @@ import { Download, FileJson, FileText } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 
 import { APP_LOGO_PATH, APP_NAME } from '../../lib/branding';
-import { useAleensApp } from '../../router/AppStateContext';
+import { useAldeensApp } from '../../router/AppStateContext';
 import { findNavRoute } from '../../router/navigation';
 
 export function TopHeader() {
-  const { analysis, downloadExport } = useAleensApp();
+  const { analysis, downloadExport } = useAldeensApp();
   const location = useLocation();
   const route = findNavRoute(location.pathname);
 

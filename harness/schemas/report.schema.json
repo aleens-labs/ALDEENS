@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Aleens Report",
+  "title": "Aldeens Report",
   "type": "object",
   "properties": {
     "analysisId": { "type": "string" },

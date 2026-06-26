@@ -1,4 +1,4 @@
-# Aleens Backend
+# Aldeens Backend
 
 FastAPI backend for deterministic Windows incident triage.
 
@@ -8,15 +8,15 @@ The primary project documentation lives in the repository root `README.md`.
 
 For any shared or internet-reachable deployment:
 
-- set `ALEENS_API_KEY`
-- set `ALEENS_PRODUCTION_SAFE=true`
-- restrict `ALEENS_CORS_ORIGINS`
+- set `ALDEENS_API_KEY`
+- set `ALDEENS_PRODUCTION_SAFE=true`
+- restrict `ALDEENS_CORS_ORIGINS`
 - do not commit `backend/.env`
 
 ## CLI
 
-Aleens also ships with a local CLI for common research and triage flows.
-Use `python -m app.cli ...` if your current shell has not yet picked up the `aleens` console-script shim.
+Aldeens also ships with a local CLI for common research and triage flows.
+Use `python -m app.cli ...` if your current shell has not yet picked up the `Aldeens` console-script shim.
 
 ```powershell
 cd backend

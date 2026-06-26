@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Aleens Finding",
+  "title": "Aldeens Finding",
   "type": "object",
   "properties": {
     "ruleId": { "type": "string" },

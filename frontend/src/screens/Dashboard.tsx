@@ -99,15 +99,15 @@ export function Dashboard({
               />
             ))}
           </div>
-          <p className="text-sm font-medium text-slate-300">Running analysis pipeline…</p>
-          <p className="text-xs text-slate-500">Evidence extraction → MITRE mapping → Risk scoring → Analyst Brief</p>
+          <p className="text-sm font-medium text-slate-300">Running analysis pipelineâ€¦</p>
+          <p className="text-xs text-slate-500">Evidence extraction â†’ MITRE mapping â†’ Risk scoring â†’ Analyst Brief</p>
         </div>
       ) : null}
 
       {/* Sticky section navbar */}
       <nav className="sticky top-0 z-40 border-b border-white/10 bg-chrome-950/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-[1560px] items-center gap-1 overflow-x-auto px-4 py-2 md:px-8">
-          <span className="mr-3 shrink-0 font-display text-sm font-semibold text-signal-teal">Aleens</span>
+          <span className="mr-3 shrink-0 font-display text-sm font-semibold text-signal-teal">Aldeens</span>
           {NAV_SECTIONS.map((s) => (
             <button
               key={s.id}
@@ -125,7 +125,7 @@ export function Dashboard({
                 rel="noreferrer"
                 className="inline-flex items-center gap-1.5 rounded-xl border border-signal-teal/30 bg-signal-teal/10 px-3 py-1.5 text-xs font-semibold text-signal-teal transition hover:bg-signal-teal/20"
               >
-                ↓ PDF
+                â†“ PDF
               </a>
               <a
                 href={exportHref('json')}
@@ -133,7 +133,7 @@ export function Dashboard({
                 rel="noreferrer"
                 className="inline-flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-slate-300 transition hover:border-white/20"
               >
-                ↓ JSON
+                â†“ JSON
               </a>
               <a
                 href={exportHref('md')}
@@ -141,7 +141,7 @@ export function Dashboard({
                 rel="noreferrer"
                 className="inline-flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-slate-300 transition hover:border-white/20"
               >
-                ↓ MD
+                â†“ MD
               </a>
             </div>
           ) : null}
@@ -181,7 +181,7 @@ export function Dashboard({
                 },
                 {
                   label: 'Last Dataset',
-                  value: audit[0]?.datasetName ?? '—',
+                  value: audit[0]?.datasetName ?? 'â€”',
                 },
               ].map((stat) => (
                 <div
