@@ -7,6 +7,7 @@ from typing import Any
 
 import yaml
 
+from app.core.cmdline import summarize_decoded_payloads
 from app.core.models import DetectionFinding, Evidence
 
 
@@ -87,11 +88,15 @@ class DetectionEngine:
             and _contains_any(item.command_line, ["-enc", "-encodedcommand", "frombase64string"])
         ]
         if encoded_pwsh:
+            reason = "PowerShell command line contains encoded or obfuscated execution."
+            decoded_payloads = summarize_decoded_payloads(encoded_pwsh)
+            if decoded_payloads:
+                reason = f"{reason} Decoded payload references: {'; '.join(decoded_payloads)}"
             findings.append(
                 self._build_finding(
                     "DL-PS-001",
                     encoded_pwsh[:2],
-                    "PowerShell command line contains encoded or obfuscated execution flags.",
+                    reason,
                 )
             )
 
@@ -159,7 +164,7 @@ class DetectionEngine:
                 )
             )
 
-        return findings
+        return sorted(findings, key=lambda item: item.rule_id)
 
     def _build_finding(self, rule_id: str, evidence: list[Evidence], reason: str) -> DetectionFinding:
         meta = self.rulebook.get(rule_id)

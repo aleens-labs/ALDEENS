@@ -37,6 +37,11 @@ class ScoreEngine:
                 )
             )
 
+        killchain_bonus = self._killchain_transitions({item.tactic for item in tactics})
+        for label, value, reason in killchain_bonus:
+            raw_risk += value
+            score_trace.append(ScoreComponent(label=label, value=value, reason=reason))
+
         completeness = self._completeness(evidence)
         penalty = 0
         if completeness < 0.55:
@@ -127,3 +132,33 @@ class ScoreEngine:
             return RiskLabel.MEDIUM
         return RiskLabel.LOW
 
+    def _killchain_transitions(self, tactics: set[str]) -> list[tuple[str, int, str]]:
+        transitions = [
+            (
+                "Execution",
+                "Credential Access",
+                12,
+                "Execution activity progressed into credential-access behavior.",
+            ),
+            (
+                "Credential Access",
+                "Command and Control",
+                10,
+                "Credential-access behavior was followed by external command-and-control connectivity.",
+            ),
+            (
+                "Persistence",
+                "Command and Control",
+                8,
+                "Persistence telemetry appears alongside command-and-control connectivity.",
+            ),
+        ]
+        return [
+            (
+                f"KILLCHAIN:{source}->{target}",
+                value,
+                reason,
+            )
+            for source, target, value, reason in transitions
+            if source in tactics and target in tactics
+        ]

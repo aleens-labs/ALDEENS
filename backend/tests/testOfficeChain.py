@@ -41,8 +41,15 @@ def test_office_chain_reaches_high_or_critical() -> None:
 
     rule_ids = {item.rule_id for item in result.findings}
     assert {"DL-WIN-001", "DL-PS-001", "DL-CR-001", "DL-NET-001"}.issubset(rule_ids)
+    assert [item.rule_id for item in result.findings] == sorted(item.rule_id for item in result.findings)
+    power_finding = next(item for item in result.findings if item.rule_id == "DL-PS-001")
+    assert "encoded or obfuscated execution." in power_finding.reason
+    assert "Decoded payload references:" in power_finding.reason
     assert result.scores.risk_label.value in {"High", "Critical"}
     assert result.scores.confidence_score >= 80
+    score_labels = [item.label for item in result.scores.score_trace]
+    assert "KILLCHAIN:Execution->Credential Access" in score_labels
+    assert "KILLCHAIN:Credential Access->Command and Control" in score_labels
     assert [step.stage for step in result.attack_chain][:4] == [
         "Initial Access",
         "Execution",

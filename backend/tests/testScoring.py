@@ -86,10 +86,20 @@ def test_scoring_applies_tactic_diversity_bonus() -> None:
             confidence=0.16,
             relatedRules=["DL-NET-001"],
         ),
+        TacticHit(
+            techniqueId="T1003.001",
+            techniqueName="LSASS Memory",
+            tactic="Credential Access",
+            description="demo",
+            confidence=0.22,
+            relatedRules=["DL-CR-001"],
+        ),
     ]
 
     scorecard = ScoreEngine().evaluate(evidence, findings, tactics)
 
     assert scorecard.risk_score >= 70
     assert any(component.label == "TACTIC-DIVERSITY" for component in scorecard.score_trace)
-
+    labels = {component.label for component in scorecard.score_trace}
+    assert "KILLCHAIN:Execution->Credential Access" in labels
+    assert "KILLCHAIN:Credential Access->Command and Control" in labels
